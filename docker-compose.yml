@@ -9,7 +9,7 @@ services:
     volumes:
       - ./work-report-management:/src
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-  
+
   php:
     build: ./php
     container_name: "laravel-php"
