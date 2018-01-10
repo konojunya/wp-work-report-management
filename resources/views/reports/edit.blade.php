@@ -14,7 +14,7 @@
           </div>
         </div>
         <div class="panel-body">
-          <form class="form-horizontal" method="POST" action="/reports/{{ $report->id }}/edit">
+          <form class="form-horizontal" method="POST" action="/{{ $report->id }}/edit">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('rp_date') ? ' has-error' : '' }}" id="datepicker-default">

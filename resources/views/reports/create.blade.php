@@ -8,7 +8,7 @@
         <div class="panel-heading">レポート作成</div>
 
         <div class="panel-body">
-          <form class="form-horizontal" method="POST" action="{{ url('reports/create') }}">
+          <form class="form-horizontal" method="POST" action="{{ url('create') }}">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('rp_date') ? ' has-error' : '' }}" id="datepicker-default">
@@ -81,7 +81,7 @@
               <label for="rp_content" class="col-md-4 control-label">作業内容</label>
 
               <div class="col-md-6">
-                <input id="rp_content" type="text" class="form-control" name="rp_content" value="{{ old('rp_content') }}" required>
+                <textarea id="rp_content" type="text" class="form-control" name="rp_content" value="{{ old('rp_content') }}" required></textarea>
 
                 @if ($errors->has('rp_content'))
                   <span class="help-block">

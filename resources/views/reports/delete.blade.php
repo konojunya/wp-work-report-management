@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <div class="panel panel-default">
-        <div class="panel-heading">レポート詳細</div>
+        <div class="panel-heading">レポート削除</div>
           <div class="panel-body">
             <table class="table">
               <tbody>
@@ -39,14 +39,14 @@
                 </tr>
                 <tr>
                   <th scope="row">作業内容</th>
-                  <td>{!! nl2br($report->rp_content) !!}</td>
+                  <td>{{ $report->rp_content }}</td>
                 </tr>
               </tbody>
             </table>
-            <div style="display: flex;">
-              <a href="/{{ $report->id }}/edit" class="btn btn-primary" style="margin-left: auto;">編集</a>
-              <a href="/{{ $report->id }}/delete" class="btn btn-danger" style="margin-left: 5px;">削除</a>
-            </div>
+            <form action="/{{ $report->id }}/delete" method="post" style="display: flex;">
+              {{ csrf_field() }}
+              <button class="btn btn-danger" type="submit" style="margin-left: auto;">削除</button>
+            </form>
           </div>
         </div>
     </div>

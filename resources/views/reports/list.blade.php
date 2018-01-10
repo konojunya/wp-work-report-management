@@ -2,12 +2,15 @@
 
 @section('content')
 <div class="container">
+@if(Session::has('message'))
+  <div class="alert alert-success">{{ session('message') }}</div>
+@endif
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
       <div class="panel panel-default">
-        <div class="panel-heading">
+        <div class="panel-heading" style="display: flex; align-items: center;">
           レポートリスト
-          <a href="/reports/create" class="btn btn-primary">追加</a>
+          <a href="/create" class="btn btn-primary" style="margin-left: auto;">追加</a>
         </div>
 
           <div class="panel-body">
@@ -26,14 +29,15 @@
                   <tr>
                     <th scope="row">{{ $report['id'] }}</th>
                     <td>{{ $report['rp_date'] }}</td>
-                    <td>{{ $report['rp_content'] }}</td>
-                    <td>{{ $report['name'] }}</td>
-                    <td><a href="/reports/{{ $report['id'] }}" class="btn btn-primary">詳細を見る</a></td>
+                    <td>{{ mb_substr($report['rp_content'], 0, 10).((mb_strlen($report->rp_content) >= 10) ? ". . .": "") }}</td>
+                    <td>{{ $report->user->us_name }}</td>
+                    <td><a href="/{{ $report['id'] }}" class="btn btn-primary">詳細を見る</a></td>
                   </tr>
                 @endforeach
               </tbody>
             </table>
 
+            {{ $reports->links() }}
           </div>
         </div>
     </div>

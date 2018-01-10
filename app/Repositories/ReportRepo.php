@@ -9,7 +9,7 @@ class ReportRepo
 {
     public function viewIndex()
     {
-        return $reports = Report::select('id', 'rp_date', 'rp_time_from',  'rp_time_to', 'rp_content', 'rp_created_at', 'reportcate_id', 'user_id')->get()->toArray();
+        return $reports = Report::select('id', 'rp_date', 'rp_time_from',  'rp_time_to', 'rp_content', 'rp_created_at', 'reportcate_id', 'user_id')->orderBy("id", "desc")->paginate(10);
     }
 
     public function show($id)
@@ -20,7 +20,7 @@ class ReportRepo
     public function create($data, $updater)
     {
         $report = new report;
-        
+
         $report->rp_date = $data['rp_date'];
         $report->rp_time_from = $data['rp_time_from'];
         $report->rp_time_to = $data['rp_time_to'];
@@ -54,5 +54,15 @@ class ReportRepo
     public function getById($id)
     {
         return $report = Report::where('id', $id)->first();
+    }
+
+    public function delete($id)
+    {
+        $report = $this->getById($id);
+        if($report) {
+            $report->delete();
+            return true;
+        }
+        return false;
     }
 }

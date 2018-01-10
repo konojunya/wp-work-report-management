@@ -12,6 +12,6 @@ class ReportsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Report::class, 10)->create();
+        factory(Report::class, 50)->create();
     }
 }
