@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/home', function () {
+Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/reports', 'ViewController@index');
+
+Route::get('/reports/create', 'ViewController@showCreateReport');
+Route::post('/reports/create', 'ViewController@createReport');
+
+Route::get('/reports/{id}', 'ViewController@showReport');
+
+Route::get('/reports/{id}/edit', 'ViewController@showEditReport');
+Route::post('/reports/{id}/edit', 'ViewController@editReport');

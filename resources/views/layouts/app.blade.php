@@ -11,6 +11,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
@@ -48,7 +50,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->us_name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
@@ -76,5 +78,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js" type="text/javascript" language="javascript"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.ja.js') }}"></script>
+    <script>
+        (function($){
+            $('#datepicker-default .date').datepicker({
+                format: "yyyy-mm-dd",
+                language: 'ja'
+            })
+            
+        })(jQuery)
+    </script>
 </body>
 </html>

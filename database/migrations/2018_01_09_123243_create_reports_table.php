@@ -19,9 +19,10 @@ class CreateReportsTable extends Migration
             $table->time('rp_time_from');
             $table->time('rp_time_to');
             $table->text('rp_content');
-            $table->datetime('rp_created_at')->timestamps();
-            $table->decimal('reportcate_id');
-            $table->decimal('user_id');
+            $table->dateTime('rp_created_at');
+            $table->integer('reportcate_id');
+            $table->integer('user_id');
+            $table->timestamps();
         });
     }
 

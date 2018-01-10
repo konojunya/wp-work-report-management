@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReportcatesTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,14 @@ class CreateReportcatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('reportcates', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('rc_name');
-            $table->text('rc_note');
-            $table->decimal('rc_list_flg');
-            $table->decimal('rc_order');
+            $table->string('us_mail');
+            $table->string('us_name');
+            $table->string('password');
+            $table->string('us_auth');
+            $table->rememberToken();
+            $table->timestamps();
         });
     }
 
@@ -29,6 +31,6 @@ class CreateReportcatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reportcates');
+        Schema::dropIfExists('users');
     }
 }
